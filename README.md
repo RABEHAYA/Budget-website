@@ -25,3 +25,7 @@ A personal budget tracking web application to help users manage their expenses, 
 - **Backend:** Python (Flask, SQLAlchemy)
 - **Database:** SQLite
 - **Tools:** Git, VS Code, GitHub
+
+
+##  Demo Video  
+[Watch on Google Drive](https://drive.google.com/file/d/16huB8HVS4OQa4SHWUrlruN-KcMmR5OnI/view?usp=sharing))
