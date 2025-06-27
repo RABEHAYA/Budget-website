@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Budget Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Satisfy&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="main-navbar">
+  <div class="nav-left">
+    <span class="logo">🔮 My Budget Wizard</span>
+  </div>
+  <div class="nav-right">
+    <a href="{{ url_for('dashboard') }}" class="nav-link active">Dashboard</a>
+    <a href="{{ url_for('categories') }}" class="nav-link">Categories</a>
+    <a href="{{ url_for('goals') }}" class="nav-link">Goals</a>
+    <a href="{{ url_for('reports') }}" class="nav-link">Reports</a>
+    <a href="{{ url_for('bills') }}" class="nav-link">Daily Essentials</a>
+    <a href="{{ url_for('logout') }}" class="nav-link">Logout</a>
+  </div>
+</nav>
+
+<header>
+  <div class="header-bg">
+    <h1 class="main-title">Welcome, {{ user_name }}!</h1>
+
+  </div>
+</header>
+
+<main>
+  <section id="budget-summary">
+    <h2>Budget Overview</h2>
+    <div class="summary-cards">
+      <div class="card income-card">
+        <p>Income</p>
+        <span id="total-income">0.00 MAD</span>
+      </div>
+      <div class="card expenses-card">
+        <p>Expenses</p>
+        <span id="total-expenses">0.00 MAD</span>
+      </div>
+      <div class="card remaining-card">
+        <p>Remaining</p>
+        <span id="remaining-budget">0.00 MAD</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="add-income">
+    <h2>Add Monthly Income</h2>
+    <form id="income-form">
+      <input type="text" id="income-source" placeholder="Source (e.g. Job, Scholarship)" required />
+      <input type="number" id="income-amount" placeholder="Monthly Income (MAD)" required />
+      <input type="date" id="income-date" required />
+
+      <button type="submit"> Save Income</button>
+    </form>
+  </section>
+
+  <section id="add-expense">
+    <h2>Add Expense</h2>
+    <form id="expense-form">
+      <input type="text" id="description" placeholder="Description" required />
+      <input type="number" id="amount" placeholder="Amount (MAD)" required />
+      <input type="text" id="category" placeholder="Category" required />
+      <input type="date" id="date" required />
+      <button type="submit">➕ Add</button>
+    </form>
+  </section>
+
+  <section id="expense-list">
+    <h2>🧾 Expense History</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Description</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Date</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="expenses-table-body">
+        <!-- JS will insert rows here -->
+      </tbody>
+    </table>
+  </section>
+</main>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+</body>
+</html>
+
+

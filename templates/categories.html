@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Categories</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/categories.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="main-navbar">
+  <div class="nav-left">
+    <span class="logo">🔮 My Budget Wizard</span>
+  </div>
+  <div class="nav-right">
+    <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+    <a href="{{ url_for('categories') }}" class="nav-link active">Categories</a>
+    <a href="{{ url_for('goals') }}" class="nav-link">Goals</a>
+    <a href="{{ url_for('reports') }}" class="nav-link">Reports</a>
+    <a href="{{ url_for('bills') }}" class="nav-link">Daily Essentials</a>
+  </div>
+</nav>
+
+<h1 class="main-title"> Hello {{ session['user_name'] }} — Your Categories</h1>
+
+<div id="categories-container" class="category-grid"></div>
+
+<section class="add-category-section">
+  <h2>Add a New Category</h2>
+  <form id="category-form" enctype="multipart/form-data">
+
+    <input type="text" id="new-category-name" placeholder="e.g. Subscriptions" required />
+    <input type="file" id="new-category-image" accept="image/*" required />
+    <button type="submit" id="add-category-btn">Add Category</button>
+  </form>
+</section>
+
+<script src="{{ url_for('static', filename='js/categories.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+

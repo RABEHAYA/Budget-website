@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bills & Reminders</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bills.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <nav class="main-navbar">
+    <div class="nav-left">
+      <span class="logo">🔮 My Budget Wizard</span>
+    </div>
+    <div class="nav-right">
+      <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+      <a href="{{ url_for('categories') }}" class="nav-link">Categories</a>
+      <a href="{{ url_for('goals') }}" class="nav-link">Goals</a>
+      <a href="{{ url_for('reports') }}" class="nav-link">Reports</a>
+      <a href="{{ url_for('bills') }}" class="nav-link active">Daily Essentials</a>
+    </div>
+  </nav>
+
+  <h1 class="main-title"> Hello {{ session['user_name'] }} — Daily Essentials</h1>
+
+  <!-- First Row: Bills & To-Do -->
+  <div class="row">
+    <div class="section">
+      <h2>Bills</h2>
+      <form id="bill-form">
+        <input type="text" id="bill-name" placeholder="Bill Name" required />
+        <input type="date" id="bill-date" required />
+        <input type="number" id="bill-amount" placeholder="Amount (MAD)" required />
+        <button type="submit">Add Bill</button>
+      </form>
+      <h3 class="list-heading">Your Bills</h3>
+      <ul id="bill-list"></ul>
+    </div>
+
+    <div class="section">
+      <h2>To-Do List</h2>
+      <form id="todo-form">
+        <input type="text" id="todo-input" placeholder="Enter a task..." required />
+        <button type="submit">Add Task</button>
+      </form>
+      <h3 class="list-heading">Your Tasks</h3>
+      <ul id="todo-list"></ul>
+    </div>
+  </div>
+
+  <!-- Second Row: Reminders & Debts -->
+  <div class="row">
+    <div class="section">
+      <h2>Reminders</h2>
+      <form id="reminder-form">
+        <input type="text" id="reminder-text" placeholder="Reminder..." required />
+        <input type="date" id="reminder-date" required />
+        <button type="submit">Add Reminder</button>
+      </form>
+      <h3 class="list-heading">Your Reminders</h3>
+      <ul id="reminder-list"></ul>
+    </div>
+
+    <div class="section">
+      <h2>Debts</h2>
+      <form id="debt-form">
+  <input type="text" id="debt-person" placeholder="Who is it for?" required />
+  <input type="text" id="debt-reason" placeholder="What is it for?" />
+  <input type="date" id="debt-date" required />
+  <input type="number" id="debt-amount" placeholder="Amount (MAD)" required />
+  <button type="submit">Add Debt</button>
+</form>
+
+      <h3 class="list-heading">Your Debts</h3>
+      <ul id="debt-list"></ul>
+    </div>
+  </div>
+
+  <script src="{{ url_for('static', filename='js/bills.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

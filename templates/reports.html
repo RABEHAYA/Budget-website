@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Budget Reports</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/reports.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+  <nav class="main-navbar">
+    <div class="nav-left">
+      <span class="logo">🔮 My Budget Wizard</span>
+    </div>
+    <div class="nav-right">
+      <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+      <a href="{{ url_for('categories') }}" class="nav-link">Categories</a>
+      <a href="{{ url_for('goals') }}" class="nav-link">Goals</a>
+      <a href="{{ url_for('reports') }}" class="nav-link active">Reports</a>
+      <a href="{{ url_for('bills') }}" class="nav-link">Daily Essentials</a>
+    </div>
+  </nav>
+
+  <h1 class="main-title"> Hello {{ session['user_name'] }} — Your Reports & Insights</h1>
+
+  <section class="quote-section">
+    <blockquote>
+      “Discipline is the bridge between goals and accomplishment.”<br>
+      <span class="quote-accent">Every MAD saved today is your freedom tomorrow.</span>
+    </blockquote>
+  </section>
+
+  <section class="data-table-section">
+    <table>
+      <thead>
+        <tr>
+          <th>Metric</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Total Income</td><td id="income-cell"></td></tr>
+        <tr><td>Total Expenses</td><td id="expenses-cell"></td></tr>
+        <tr><td>Total Saved</td><td id="saved-cell"></td></tr>
+        <tr><td>Goal Progress</td><td id="goal-cell"></td></tr>
+        <tr><td>Income/Expense Ratio</td><td id="ratio-cell"></td></tr>
+        <tr><td>Largest Expense</td><td id="largest-cell"></td></tr>
+        <tr><td>Most Frequent Category</td><td id="frequent-cell"></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="charts-row">
+    <div class="chart-box">
+      <h3 class="chart-title"> Monthly Expense Trend</h3>
+      <canvas id="monthly-chart"></canvas>
+    </div>
+    <div class="chart-box">
+      <h3 class="chart-title"> Category Breakdown</h3>
+      <canvas id="category-pie"></canvas>
+    </div>
+  </section>
+
+  <section class="tips-section">
+    <h2>💬 Smart Tip</h2>
+    <p id="tip-text">Tips will appear here based on your budget behavior.</p>
+  </section>
+
+  <script src="{{ url_for('static', filename='js/reports.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

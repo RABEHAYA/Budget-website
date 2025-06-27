@@ -1,0 +1,18 @@
+
+2. Paste this content:
+
+```gitignore
+# Ignore compiled Python files
+__pycache__/
+*.py[cod]
+
+# Ignore database
+instance/users.db
+
+# Ignore virtual environments
+venv/
+env/
+
+# Ignore system files
+.DS_Store
+Thumbs.db

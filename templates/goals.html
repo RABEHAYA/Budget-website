@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saving Goals</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/goals.css') }}" />
+  <link href="https://fonts.googleapis.com/css2?family=Satisfy&family=Cinzel+Decorative:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav class="main-navbar">
+  <div class="nav-left">
+    <span class="logo">🔮 My Budget Wizard</span>
+  </div>
+  <div class="nav-right">
+    <a href="{{ url_for('dashboard') }}" class="nav-link">Dashboard</a>
+    <a href="{{ url_for('categories') }}" class="nav-link">Categories</a>
+    <a href="{{ url_for('goals') }}" class="nav-link active">Goals</a>
+    <a href="{{ url_for('reports') }}" class="nav-link">Reports</a>
+    <a href="{{ url_for('bills') }}" class="nav-link">Daily Essentials</a>
+  </div>
+</nav>
+
+<h1 class="main-title"> Hello {{ session['user_name'] }} — Your Saving Goals</h1>
+
+<section class="form-section">
+  <input type="text" id="goal-name" placeholder="Goal Name (e.g. Laptop)" />
+  <input type="number" id="goal-target" placeholder="Target (MAD)" />
+  <button id="add-goal-btn">Add Goal</button>
+  <button id="export-btn"> Export</button>
+</section>
+
+<section id="summary" class="summary"></section>
+<section id="chart-section">
+  <canvas id="goal-chart" width="600" height="300"></canvas>
+</section>
+<section id="goals-container" class="goals-container"></section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{{ url_for('static', filename='js/goals.js') }}"></script>
+</body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+  <div class="auth-container">
+    <h1>Sign Up</h1>
+    <form id="signup-form">
+      <input type="text" id="name" placeholder="Name" required />
+      <input type="email" id="email" placeholder="Email" required />
+      <input type="password" id="password" placeholder="Password" required />
+      <button type="submit">Sign Up</button>
+      <p>Already have an account? <a href="{{ url_for('login_page') }}">Login</a></p>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("signup-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const response = await fetch("/api/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      const result = await response.json();
+      if (response.ok && result.success) {
+        alert("Signup successful! Redirecting to dashboard...");
+        window.location.href = "/index";
+      } else {
+        alert(result.message || "Signup failed.");
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
+
